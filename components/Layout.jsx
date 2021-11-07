@@ -2,7 +2,6 @@ import { Box, useColorMode } from "@chakra-ui/react";
 
 const Layout = ({ children }) => {
   const { colorMode } = useColorMode();
-  console.log(colorMode);
   return (
     <Box
       px={{ base: 5, md: 10, lg: 20 }}
