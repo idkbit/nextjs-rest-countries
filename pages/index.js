@@ -22,7 +22,7 @@ export default function Home({ countryList }) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    "https://restcountries.com/v2/all?fields=name,population,region,capital,flag"
+    "https://restcountries.com/v2/all?fields=name,population,region,capital,flag,alpha3Code"
   );
 
   //this function i copied from stackoverflow

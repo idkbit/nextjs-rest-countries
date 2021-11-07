@@ -3,14 +3,15 @@ import Card from "./Card";
 
 const CountryList = ({ countryList }) => {
   const renderedCountries = countryList.map(
-    ({ name, population, capital, region, flag }) => (
+    ({ name, population, capital, region, flag, alpha3Code }) => (
       <Card
-        key={name}
+        key={name + alpha3Code}
         name={name}
         population={population}
         capital={capital}
         region={region}
         imgSrc={flag}
+        code={alpha3Code}
       />
     )
   );
