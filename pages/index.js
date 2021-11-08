@@ -12,7 +12,7 @@ export default function Home({ countryList }) {
         <title>Where in the world?</title>
       </Head>
       <Layout>
-        <Box display="flex" mb={10}>
+        <Box display="flex" justifyContent="space-between" mb={10}>
           <Filter />
           <Dropdown />
         </Box>

@@ -1,5 +1,5 @@
 import { Menu, MenuList, MenuItem, MenuButton, Button } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, CheckIcon } from "@chakra-ui/icons";
 import { useAppContext } from "../context/state";
 
 const Dropdown = () => {
@@ -25,11 +25,31 @@ const Dropdown = () => {
         {region !== "all" && (
           <MenuItem onClick={() => setRegion("all")}>All regions</MenuItem>
         )}
-        <MenuItem onClick={() => setRegion("africa")}>Africa</MenuItem>
-        <MenuItem onClick={() => setRegion("america")}>America</MenuItem>
-        <MenuItem onClick={() => setRegion("asia")}>Asia</MenuItem>
-        <MenuItem onClick={() => setRegion("europe")}>Europe</MenuItem>
-        <MenuItem onClick={() => setRegion("oceania")}>Oceania</MenuItem>
+        <MenuItem
+          icon={region === "Africa" && <CheckIcon />}
+          onClick={() => setRegion("Africa")}>
+          Africa
+        </MenuItem>
+        <MenuItem
+          icon={region === "America" && <CheckIcon />}
+          onClick={() => setRegion("America")}>
+          America
+        </MenuItem>
+        <MenuItem
+          icon={region === "Asia" && <CheckIcon />}
+          onClick={() => setRegion("Asia")}>
+          Asia
+        </MenuItem>
+        <MenuItem
+          icon={region === "Europe" && <CheckIcon />}
+          onClick={() => setRegion("Europe")}>
+          Europe
+        </MenuItem>
+        <MenuItem
+          icon={region === "Oceania" && <CheckIcon />}
+          onClick={() => setRegion("Oceania")}>
+          Oceania
+        </MenuItem>
       </MenuList>
     </Menu>
   );

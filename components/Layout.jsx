@@ -6,6 +6,7 @@ const Layout = ({ children }) => {
     <Box
       px={{ base: 5, md: 10, lg: 20 }}
       maxWidth={1920}
+      minHeight="94.6vh"
       mx="auto"
       pt={14}
       backgroundColor={colorMode === "dark" ? "bgDark" : "white98"}>

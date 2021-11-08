@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useAppContext } from "../context/state";
 
 const CountryList = ({ countryList }) => {
-  const { filter } = useAppContext();
+  const { filter, region: stateRegion } = useAppContext();
   const [filtered, setFiltered] = useState([]);
   const [count, setCount] = useState({
     prev: 0,
@@ -13,21 +13,31 @@ const CountryList = ({ countryList }) => {
   });
 
   useEffect(() => {
-    if (!filter) return;
-    const timer = setTimeout(
-      () =>
+    if (!filter && stateRegion === "all") return;
+    const timer = setTimeout(() => {
+      if (stateRegion === "all") {
         setFiltered(
           countryList.filter((c) =>
             c.name.toLowerCase().includes(filter.toLowerCase())
           )
-        ),
-      500
-    );
+        );
+      } else if (!filter && stateRegion !== "all") {
+        setFiltered(countryList.filter((c) => c.region === stateRegion));
+      } else {
+        setFiltered(
+          countryList.filter(
+            (c) =>
+              c.region === stateRegion &&
+              c.name.toLowerCase().includes(filter.toLowerCase())
+          )
+        );
+      }
+    }, 500);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, countryList]);
+  }, [filter, stateRegion, countryList]);
 
   const [hasMore, setHasMore] = useState(true);
   const [current, setCurrent] = useState(
@@ -50,7 +60,7 @@ const CountryList = ({ countryList }) => {
     }));
   };
 
-  if (!filter) {
+  if (!filter && stateRegion === "all") {
     return (
       <Grid
         as={InfiniteScroll}
@@ -86,20 +96,17 @@ const CountryList = ({ countryList }) => {
     );
   }
 
-  if (!filtered.length) return <h1>shit</h1>;
+  if (!filtered.length) return <h1>There is no country named {filter}</h1>;
 
   return (
     <Grid
-      as={InfiniteScroll}
-      dataLength={filtered.length}
-      next={getMoreData}
-      hasMore={hasMore}
-      loader={<h4>Loading...</h4>}
+      as="main"
       gridTemplateColumns={{
-        base: "1fr",
-        sm: "repeat(2,1fr)",
-        md: "repeat(3,minmax(20rem, 30rem))",
-        lg: "repeat(4, minmax(20rem, 30rem))",
+        base: "20rem",
+        sm: "25rem",
+        md: "repeat(2,20rem)",
+        lg: "repeat(3, minmax(10rem, 20rem))",
+        xl: "repeat(4, minmax(10rem, 20rem))",
       }}
       gap={{ md: 6, lg: 8 }}
       rowGap={{ base: 4 }}
