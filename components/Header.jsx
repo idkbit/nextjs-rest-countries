@@ -1,22 +1,34 @@
-import { Box, Heading, useColorMode } from "@chakra-ui/react";
+import { Box, Heading, useColorMode, Button } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box
+      boxShadow="md"
       py={3}
       as="header"
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
-      onClick={toggleColorMode}>
-      <Heading
-        as="h1"
-        px={{ base: 5, md: 10, lg: 20 }}
-        fontSize={{ base: "xl", md: "2xl" }}>
+      display="flex"
+      justifyContent="space-between"
+      px={{ base: 5, md: 10, lg: 20 }}>
+      <Heading as="h1" fontSize={{ base: "xl", md: "2xl" }}>
         <Link href="/">
           <a>Where in the world?</a>
         </Link>
       </Heading>
+      <Button
+        bgColor="transparent"
+        onClick={toggleColorMode}
+        aria-label="toggle color theme.">
+        {colorMode === "dark" ? (
+          <MoonIcon bgColor="transparent" boxShadow="base" mr={4} />
+        ) : (
+          <SunIcon bgColor="transparent" boxShadow="base" mr={4} />
+        )}
+        Dark Mode
+      </Button>
     </Box>
   );
 };
