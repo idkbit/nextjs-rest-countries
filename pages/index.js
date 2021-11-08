@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import CountryList from "../components/CountryList";
+import Dropdown from "../components/Dropdown";
 import Filter from "../components/Filter";
 import Layout from "../components/Layout";
 
@@ -11,8 +12,9 @@ export default function Home({ countryList }) {
         <title>Where in the world?</title>
       </Head>
       <Layout>
-        <Box display="flex">
+        <Box display="flex" mb={10}>
           <Filter />
+          <Dropdown />
         </Box>
         <CountryList countryList={countryList} />
       </Layout>
