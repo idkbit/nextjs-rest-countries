@@ -11,6 +11,10 @@ const CountryList = ({ countryList }) => {
     prev: 0,
     next: 10,
   });
+  const [hasMore, setHasMore] = useState(true);
+  const [current, setCurrent] = useState(
+    countryList.slice(count.prev, count.next)
+  );
 
   useEffect(() => {
     if (!filter && stateRegion === "all") return;
@@ -39,10 +43,6 @@ const CountryList = ({ countryList }) => {
     };
   }, [filter, stateRegion, countryList]);
 
-  const [hasMore, setHasMore] = useState(true);
-  const [current, setCurrent] = useState(
-    countryList.slice(count.prev, count.next)
-  );
   const getMoreData = () => {
     if (current.length === countryList.length) {
       setHasMore(false);
@@ -96,7 +96,7 @@ const CountryList = ({ countryList }) => {
     );
   }
 
-  if (!filtered.length) return <h1>There is no country named {filter}</h1>;
+  if (!filtered.length) return <h2> No matches</h2>;
 
   return (
     <Grid

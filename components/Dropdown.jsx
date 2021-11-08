@@ -7,13 +7,13 @@ const Dropdown = () => {
   const buttonText =
     region === "all"
       ? "Filter by Region"
-      : region === "africa"
+      : region === "Africa"
       ? "Africa"
-      : region === "america"
+      : region === "Americas"
       ? "America"
-      : region === "asia"
+      : region === "Asia"
       ? "Asia"
-      : region === "europe"
+      : region === "Europe"
       ? "Europe"
       : "Oceania";
   return (
@@ -32,7 +32,7 @@ const Dropdown = () => {
         </MenuItem>
         <MenuItem
           icon={region === "America" && <CheckIcon />}
-          onClick={() => setRegion("America")}>
+          onClick={() => setRegion("Americas")}>
           America
         </MenuItem>
         <MenuItem
