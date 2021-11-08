@@ -1,4 +1,5 @@
 import Details from "../components/Details";
+import { numberWithCommas } from "../utils";
 
 const Country = ({
   name,
@@ -11,6 +12,7 @@ const Country = ({
   currencies,
   languages,
   nativeName,
+  flag,
 }) => {
   return (
     <Details
@@ -24,6 +26,7 @@ const Country = ({
       topLevelDomain={topLevelDomain}
       currencies={currencies}
       languages={languages}
+      flag={flag}
     />
   );
 };
@@ -49,7 +52,8 @@ export async function getStaticProps({ params }) {
     `https://restcountries.com/v2/alpha/${params.country}`
   );
   const data = await response.json();
-
+  data.population = numberWithCommas(data.population);
+  console.log(data);
   return {
     props: {
       ...data,
