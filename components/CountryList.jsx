@@ -3,6 +3,7 @@ import { Grid } from "@chakra-ui/react";
 import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useAppContext } from "../context/state";
+import Link from "next/link";
 
 const CountryList = ({ countryList }) => {
   const { filter, region: stateRegion } = useAppContext();
@@ -81,15 +82,18 @@ const CountryList = ({ countryList }) => {
         {current &&
           current.map(
             ({ name, population, capital, region, flag, alpha3Code }) => (
-              <Card
-                key={name + alpha3Code}
-                name={name}
-                population={population}
-                capital={capital}
-                region={region}
-                imgSrc={flag}
-                code={alpha3Code}
-              />
+              <Link href={`/${alpha3Code}`} key={name + alpha3Code}>
+                <a>
+                  <Card
+                    name={name}
+                    population={population}
+                    capital={capital}
+                    region={region}
+                    imgSrc={flag}
+                    code={alpha3Code}
+                  />
+                </a>
+              </Link>
             )
           )}
       </Grid>
@@ -114,15 +118,18 @@ const CountryList = ({ countryList }) => {
       {filtered &&
         filtered.map(
           ({ name, population, capital, region, flag, alpha3Code }) => (
-            <Card
-              key={name + alpha3Code}
-              name={name}
-              population={population}
-              capital={capital}
-              region={region}
-              imgSrc={flag}
-              code={alpha3Code}
-            />
+            <Link href={`/${alpha3Code}`} key={name + alpha3Code}>
+              <a>
+                <Card
+                  name={name}
+                  population={population}
+                  capital={capital}
+                  region={region}
+                  imgSrc={flag}
+                  code={alpha3Code}
+                />
+              </a>
+            </Link>
           )
         )}
     </Grid>
