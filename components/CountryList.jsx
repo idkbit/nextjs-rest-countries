@@ -83,7 +83,7 @@ const CountryList = ({ countryList }) => {
             <Link href={`/${cca3}`} key={name.official + cca3}>
               <a>
                 <Card
-                  name={name.official}
+                  name={name.common}
                   population={population}
                   capital={capital}
                   region={region}

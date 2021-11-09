@@ -23,7 +23,8 @@ const Details = ({
 }) => {
   const { colorMode } = useColorMode();
   const color = colorMode === "dark" ? "white" : "textLight";
-  const languagesArray = Object.entries(languages).map(([key, value]) => value);
+  const languagesArray =
+    languages && Object.entries(languages).map(([key, value]) => value);
 
   return (
     <Flex direction={{ base: "column", xl: "row" }}>
@@ -50,7 +51,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Native Name:{" "}
               </Text>
-              {Object.keys(name.nativeName)[0].official}
+              {name.nativeName && Object.keys(name.nativeName)[0].official}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
@@ -82,30 +83,33 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Top Level Domain:{" "}
               </Text>
-              {tld.join(", ")}
+              {tld && tld.join(", ")}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
                 Currencies:{" "}
               </Text>
-              {currencies &&
-                Object.entries(currencies).map(([key, value], index) => (
-                  <Text key={key + value} as="span">
-                    {value.name}
-                    {index < currencies.length - 1 && ", "}
-                  </Text>
-                ))}
+              {currencies
+                ? Object.entries(currencies).map(([key, value], index) => (
+                    <Text key={key + value} as="span">
+                      {value.name}
+                      {index < currencies.length - 1 && ", "}
+                    </Text>
+                  ))
+                : "None"}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
                 Languages:{" "}
               </Text>
-              {languagesArray.map((lang, index) => (
-                <Text key={lang} as="span">
-                  {lang}
-                  {index < languagesArray.length - 1 && ", "}
-                </Text>
-              ))}
+              {languagesArray
+                ? languagesArray.map((lang, index) => (
+                    <Text key={lang} as="span">
+                      {lang}
+                      {index < languagesArray.length - 1 && ", "}
+                    </Text>
+                  ))
+                : "None"}
             </Heading>
           </Box>
         </Flex>
