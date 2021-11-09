@@ -33,7 +33,6 @@ const Details = ({
         position="relative"
         mr={{ md: 14 }}>
         <Image
-          style={{ boxShadow: "var(--chakra-shadows-base)" }}
           src={flag}
           layout="fill"
           alt={`${name} flag`}
