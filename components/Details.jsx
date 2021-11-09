@@ -11,7 +11,6 @@ import {
 
 const Details = ({
   name,
-  nativeName,
   currencies,
   capital,
   borders,
@@ -50,7 +49,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Native Name:{" "}
               </Text>
-              {nativeName}
+              {name.nativeName}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">

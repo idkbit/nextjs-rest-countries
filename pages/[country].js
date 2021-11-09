@@ -14,7 +14,6 @@ const Country = ({
   tld,
   currencies,
   languages,
-  nativeName,
   flags,
 }) => {
   const { colorMode } = useColorMode();
@@ -37,7 +36,6 @@ const Country = ({
         <Details
           name={name}
           population={population}
-          nativeName={nativeName}
           region={region}
           subregion={subregion}
           borders={borders}
