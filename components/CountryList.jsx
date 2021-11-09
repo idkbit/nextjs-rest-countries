@@ -79,8 +79,8 @@ const CountryList = ({ countryList }) => {
         }}
         gap={{ base: 14 }}>
         {current &&
-          current.map(({ name, population, capital, region, flags, cioc }) => (
-            <Link href={`/${cioc}`} key={name.official + cioc}>
+          current.map(({ name, population, capital, region, flags, cca3 }) => (
+            <Link href={`/${cca3}`} key={name.official + cca3}>
               <a>
                 <Card
                   name={name.official}
@@ -88,7 +88,7 @@ const CountryList = ({ countryList }) => {
                   capital={capital}
                   region={region}
                   imgSrc={flags.svg}
-                  code={cioc}
+                  code={cca3}
                 />
               </a>
             </Link>
@@ -113,8 +113,8 @@ const CountryList = ({ countryList }) => {
       rowGap={{ base: 4 }}
       columnGap={{ base: 4 }}>
       {filtered &&
-        filtered.map(({ name, population, capital, region, flags, cioc }) => (
-          <Link href={`/${cioc}`} key={name.official + cioc}>
+        filtered.map(({ name, population, capital, region, flags, cca3 }) => (
+          <Link href={`/${cca3}`} key={name.official + cca3}>
             <a>
               <Card
                 name={name.official}
@@ -122,7 +122,7 @@ const CountryList = ({ countryList }) => {
                 capital={capital}
                 region={region}
                 imgSrc={flags.svg}
-                code={cioc}
+                code={cca3}
               />
             </a>
           </Link>
