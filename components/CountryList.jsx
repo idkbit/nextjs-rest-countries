@@ -76,6 +76,15 @@ const CountryList = ({ countryList }) => {
     </Link>
   );
 
+  const gridColumns = {
+    base: "20rem",
+    sm: "25rem",
+    md: "repeat(2,20rem)",
+    lg: "repeat(3, 15rem)",
+    xl: "repeat(4, minmax(13rem,18rem))",
+    "2xl": "repeat(4, minmax(18rem,26rem))",
+  };
+
   if (!filter && stateRegion === "all") {
     return (
       <Grid
@@ -84,14 +93,7 @@ const CountryList = ({ countryList }) => {
         next={getMoreData}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
-        gridTemplateColumns={{
-          base: "20rem",
-          sm: "25rem",
-          md: "repeat(2,20rem)",
-          lg: "repeat(3, 15rem)",
-          xl: "repeat(4, minmax(13rem,18rem))",
-          "2xl": "repeat(4, minmax(18rem,26rem))",
-        }}
+        gridTemplateColumns={gridColumns}
         placeContent={{ base: "center", lg: "start" }}
         gap={{ base: 14 }}>
         {current && current.map(renderCards)}
@@ -102,18 +104,7 @@ const CountryList = ({ countryList }) => {
   if (!filtered.length && stateRegion !== "all") return <h2> No matches</h2>;
 
   return (
-    <Grid
-      as="main"
-      gridTemplateColumns={{
-        base: "20rem",
-        sm: "25rem",
-        md: "repeat(2,20rem)",
-        lg: "repeat(3, minmax(10rem, 20rem))",
-        xl: "repeat(4, minmax(10rem, 20rem))",
-      }}
-      gap={{ md: 6, lg: 8 }}
-      rowGap={{ base: 4 }}
-      columnGap={{ base: 4 }}>
+    <Grid as="main" gridTemplateColumns={gridColumns} gap={14}>
       {filtered && filtered.map(renderCards)}
     </Grid>
   );
