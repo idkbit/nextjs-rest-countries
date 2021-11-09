@@ -68,15 +68,16 @@ const CountryList = ({ countryList }) => {
         dataLength={current.length}
         next={getMoreData}
         hasMore={hasMore}
-        placeContent={{ base: "center", xl: "initial" }}
         loader={<h4>Loading...</h4>}
         gridTemplateColumns={{
           base: "20rem",
           sm: "25rem",
           md: "repeat(2,20rem)",
-          lg: "repeat(3, minmax(10rem,20rem))",
-          xl: "repeat(4, minmax(10rem,20rem))",
+          lg: "repeat(3, 15rem)",
+          xl: "repeat(4, minmax(13rem,18rem))",
+          "2xl": "repeat(4, minmax(18rem,26rem))",
         }}
+        placeContent={{ base: "center", lg: "start" }}
         gap={{ base: 14 }}>
         {current &&
           current.map(({ name, population, capital, region, flags, cca3 }) => (

@@ -14,10 +14,9 @@ export default function Home({ countryList }) {
       </Head>
       <Layout>
         <Flex
-          direction={{ base: "column", xl: "row" }}
+          direction={{ base: "column", lg: "row" }}
           alignItems="flex-start"
           justifyContent="space-between"
-          ml={{ base: "3.5rem", xl: 0 }}
           mb={10}>
           <Filter />
           <Dropdown />
