@@ -88,7 +88,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Currencies:{" "}
               </Text>
-              {currencies.map((c, index) => (
+              {currencies?.map((c, index) => (
                 <Text key={c.name} as="span">
                   {c.name}
                   {index < currencies.length - 1 && ", "}
@@ -99,7 +99,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Languages:{" "}
               </Text>
-              {languages.map((l, index) => (
+              {languages?.map((l, index) => (
                 <Text key={l.name} as="span">
                   {l.name}
                   {index < languages.length - 1 && ", "}
@@ -122,7 +122,7 @@ const Details = ({
               Border countries:{" "}
             </Heading>
             <Flex wrap="wrap">
-              {borders.map((c) => (
+              {borders?.map((c) => (
                 <Link passHref key={c} href={`/${c}`}>
                   <Button
                     padding="1rem 2rem"
