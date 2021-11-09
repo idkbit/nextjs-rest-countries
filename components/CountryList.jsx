@@ -79,22 +79,20 @@ const CountryList = ({ countryList }) => {
         }}
         gap={{ base: 14 }}>
         {current &&
-          current.map(
-            ({ name, population, capital, region, flag, alpha3Code }) => (
-              <Link href={`/${alpha3Code}`} key={name + alpha3Code}>
-                <a>
-                  <Card
-                    name={name}
-                    population={population}
-                    capital={capital}
-                    region={region}
-                    imgSrc={flag}
-                    code={alpha3Code}
-                  />
-                </a>
-              </Link>
-            )
-          )}
+          current.map(({ name, population, capital, region, flags, cioc }) => (
+            <Link href={`/${cioc}`} key={name.official + cioc}>
+              <a>
+                <Card
+                  name={name.official}
+                  population={population}
+                  capital={capital}
+                  region={region}
+                  imgSrc={flags.svg}
+                  code={cioc}
+                />
+              </a>
+            </Link>
+          ))}
       </Grid>
     );
   }
@@ -115,22 +113,20 @@ const CountryList = ({ countryList }) => {
       rowGap={{ base: 4 }}
       columnGap={{ base: 4 }}>
       {filtered &&
-        filtered.map(
-          ({ name, population, capital, region, flag, alpha3Code }) => (
-            <Link href={`/${alpha3Code}`} key={name + alpha3Code}>
-              <a>
-                <Card
-                  name={name}
-                  population={population}
-                  capital={capital}
-                  region={region}
-                  imgSrc={flag}
-                  code={alpha3Code}
-                />
-              </a>
-            </Link>
-          )
-        )}
+        filtered.map(({ name, population, capital, region, flags, cioc }) => (
+          <Link href={`/${cioc}`} key={name.official + cioc}>
+            <a>
+              <Card
+                name={name.official}
+                population={population}
+                capital={capital}
+                region={region}
+                imgSrc={flag.svg}
+                code={cioc}
+              />
+            </a>
+          </Link>
+        ))}
     </Grid>
   );
 };
