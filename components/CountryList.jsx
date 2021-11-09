@@ -61,6 +61,21 @@ const CountryList = ({ countryList }) => {
     }));
   };
 
+  const renderCards = ({ name, population, capital, region, flags, cca3 }) => (
+    <Link href={`/${cca3}`} key={name.official + cca3}>
+      <a>
+        <Card
+          name={name.official}
+          population={population}
+          capital={capital}
+          region={region}
+          imgSrc={flags.svg}
+          code={cca3}
+        />
+      </a>
+    </Link>
+  );
+
   if (!filter && stateRegion === "all") {
     return (
       <Grid
@@ -79,21 +94,7 @@ const CountryList = ({ countryList }) => {
         }}
         placeContent={{ base: "center", lg: "start" }}
         gap={{ base: 14 }}>
-        {current &&
-          current.map(({ name, population, capital, region, flags, cca3 }) => (
-            <Link href={`/${cca3}`} key={name.official + cca3}>
-              <a>
-                <Card
-                  name={name.common}
-                  population={population}
-                  capital={capital}
-                  region={region}
-                  imgSrc={flags.svg}
-                  code={cca3}
-                />
-              </a>
-            </Link>
-          ))}
+        {current && current.map(renderCards)}
       </Grid>
     );
   }
@@ -113,21 +114,7 @@ const CountryList = ({ countryList }) => {
       gap={{ md: 6, lg: 8 }}
       rowGap={{ base: 4 }}
       columnGap={{ base: 4 }}>
-      {filtered &&
-        filtered.map(({ name, population, capital, region, flags, cca3 }) => (
-          <Link href={`/${cca3}`} key={name.official + cca3}>
-            <a>
-              <Card
-                name={name.official}
-                population={population}
-                capital={capital}
-                region={region}
-                imgSrc={flags.svg}
-                code={cca3}
-              />
-            </a>
-          </Link>
-        ))}
+      {filtered && filtered.map(renderCards)}
     </Grid>
   );
 };
