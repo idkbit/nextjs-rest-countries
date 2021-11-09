@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import CountryList from "../components/CountryList";
 import Dropdown from "../components/Dropdown";
@@ -13,10 +13,14 @@ export default function Home({ countryList }) {
         <title>Where in the world?</title>
       </Head>
       <Layout>
-        <Box display="flex" justifyContent="space-between" mb={10}>
+        <Flex
+          direction={{ base: "column", xl: "row" }}
+          alignItems="flex-start"
+          justifyContent="space-between"
+          mb={10}>
           <Filter />
           <Dropdown />
-        </Box>
+        </Flex>
         <CountryList countryList={countryList} />
       </Layout>
     </>

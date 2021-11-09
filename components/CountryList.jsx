@@ -76,9 +76,7 @@ const CountryList = ({ countryList }) => {
           lg: "repeat(3, minmax(10rem,20rem))",
           xl: "repeat(4, minmax(10rem,20rem))",
         }}
-        gap={{ md: 6, lg: 8 }}
-        rowGap={{ base: 4 }}
-        columnGap={{ base: 4 }}>
+        gap={{ base: 14 }}>
         {current &&
           current.map(
             ({ name, population, capital, region, flag, alpha3Code }) => (
@@ -100,7 +98,7 @@ const CountryList = ({ countryList }) => {
     );
   }
 
-  if (!filtered.length) return <h2> No matches</h2>;
+  if (!filtered.length && stateRegion !== "all") return <h2> No matches</h2>;
 
   return (
     <Grid

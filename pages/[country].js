@@ -1,5 +1,8 @@
 import Details from "../components/Details";
 import { numberWithCommas } from "../utils";
+import { Box, Button, Text, useColorMode } from "@chakra-ui/react";
+import Link from "next/link";
+import Layout from "../components/Layout";
 
 const Country = ({
   name,
@@ -14,20 +17,38 @@ const Country = ({
   nativeName,
   flag,
 }) => {
+  const { colorMode } = useColorMode();
   return (
-    <Details
-      name={name}
-      population={population}
-      nativeName={nativeName}
-      region={region}
-      subregion={subregion}
-      borders={borders}
-      capital={capital}
-      topLevelDomain={topLevelDomain}
-      currencies={currencies}
-      languages={languages}
-      flag={flag}
-    />
+    <Layout>
+      <Box display="flex" flexDirection="column" alignItems="flex-start">
+        <Link href="/" passHref>
+          <Button
+            color={colorMode === "dark" ? "white" : "textLight"}
+            bgColor={colorMode === "dark" ? "elementsDark" : "white"}
+            boxShadow="md"
+            padding="1rem 2rem"
+            mb={14}>
+            <Text as="span" mr={2}>
+              &larr;
+            </Text>{" "}
+            Back
+          </Button>
+        </Link>
+        <Details
+          name={name}
+          population={population}
+          nativeName={nativeName}
+          region={region}
+          subregion={subregion}
+          borders={borders}
+          capital={capital}
+          topLevelDomain={topLevelDomain}
+          currencies={currencies}
+          languages={languages}
+          flag={flag}
+        />
+      </Box>
+    </Layout>
   );
 };
 
@@ -53,7 +74,6 @@ export async function getStaticProps({ params }) {
   );
   const data = await response.json();
   data.population = numberWithCommas(data.population);
-  console.log(data);
   return {
     props: {
       ...data,
