@@ -88,12 +88,13 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Currencies:{" "}
               </Text>
-              {Object.entries(currencies).map(([key, value], index) => (
-                <Text key={key + value} as="span">
-                  {value.name}
-                  {index < currencies.length - 1 && ", "}
-                </Text>
-              ))}
+              {currencies &&
+                Object.entries(currencies).map(([key, value], index) => (
+                  <Text key={key + value} as="span">
+                    {value.name}
+                    {index < currencies.length - 1 && ", "}
+                  </Text>
+                ))}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
