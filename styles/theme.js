@@ -5,8 +5,8 @@ const theme = extendTheme({
     initialColorMode: "dark",
   },
   fonts: {
-    body: "Nunito Sans",
-    heading: "Nunito Sans",
+    body: "Nunito Sans, sans-serif",
+    heading: "Nunito Sans, sans-serif",
   },
   colors: {
     white: "hsl(0, 0%, 100%)",
