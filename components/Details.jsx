@@ -17,10 +17,10 @@ const Details = ({
   borders,
   region,
   subregion,
-  topLevelDomain,
+  tld,
   languages,
   population,
-  flag,
+  flags,
 }) => {
   const { colorMode } = useColorMode();
   const color = colorMode === "dark" ? "white" : "textLight";
@@ -33,7 +33,7 @@ const Details = ({
         position="relative"
         mr={{ md: 14 }}>
         <Image
-          src={flag}
+          src={flags.svg}
           layout="fill"
           alt={`${name} flag`}
           objectFit="contain"
@@ -42,7 +42,7 @@ const Details = ({
       </Box>
       <Box mt={{ base: 8, md: 0 }}>
         <Heading mb={8} color={color}>
-          {name}
+          {name.official}
         </Heading>
         <Flex direction={{ base: "column", md: "row" }} css={{ gap: "2rem" }}>
           <Box>
@@ -82,13 +82,13 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Top Level Domain:{" "}
               </Text>
-              {topLevelDomain.join(", ")}
+              {tld.join(", ")}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
                 Currencies:{" "}
               </Text>
-              {currencies?.map((c, index) => (
+              {Array.from(currencies)?.map((c, index) => (
                 <Text key={c.name} as="span">
                   {c.name}
                   {index < currencies.length - 1 && ", "}
@@ -99,7 +99,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Languages:{" "}
               </Text>
-              {languages?.map((l, index) => (
+              {Array.from(languages)?.map((l, index) => (
                 <Text key={l.name} as="span">
                   {l.name}
                   {index < languages.length - 1 && ", "}

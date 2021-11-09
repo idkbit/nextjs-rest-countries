@@ -68,6 +68,7 @@ const CountryList = ({ countryList }) => {
         dataLength={current.length}
         next={getMoreData}
         hasMore={hasMore}
+        placeContent={{ base: "center", xl: "initial" }}
         loader={<h4>Loading...</h4>}
         gridTemplateColumns={{
           base: "20rem",

@@ -11,11 +11,11 @@ const Country = ({
   capital,
   borders,
   subregion,
-  topLevelDomain,
+  tld,
   currencies,
   languages,
   nativeName,
-  flag,
+  flags,
 }) => {
   const { colorMode } = useColorMode();
   return (
@@ -42,10 +42,10 @@ const Country = ({
           subregion={subregion}
           borders={borders}
           capital={capital}
-          topLevelDomain={topLevelDomain}
+          tld={tld}
           currencies={currencies}
           languages={languages}
-          flag={flag}
+          flags={flags}
         />
       </Box>
     </Layout>
@@ -70,13 +70,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const response = await fetch(
-    `https://restcountries.com/v2/alpha/${params.country}`
+    `https://restcountries.com/v3.1/alpha/${params.country}`
   );
   const data = await response.json();
-  data.population = numberWithCommas(data.population);
+  data[0].population = numberWithCommas(data[0].population);
   return {
     props: {
-      ...data,
+      ...data[0],
     },
   };
 }
