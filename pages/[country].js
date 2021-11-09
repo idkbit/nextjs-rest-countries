@@ -53,10 +53,10 @@ const Country = ({
 export default Country;
 
 export async function getStaticPaths() {
-  const response = await fetch("https://restcountries.com/v3/all?fields=cioc");
+  const response = await fetch("https://restcountries.com/v3/all?fields=cca3");
   const data = await response.json();
   const paths = data.map((c) => ({
-    params: { country: c.cioc },
+    params: { country: c.cca3 },
   }));
   return {
     paths,
