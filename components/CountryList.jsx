@@ -23,7 +23,7 @@ const CountryList = ({ countryList }) => {
       if (stateRegion === "all") {
         setFiltered(
           countryList.filter((c) =>
-            c.name.toLowerCase().includes(filter.toLowerCase())
+            c.name.official.toLowerCase().includes(filter.toLowerCase())
           )
         );
       } else if (!filter && stateRegion !== "all") {
@@ -33,7 +33,7 @@ const CountryList = ({ countryList }) => {
           countryList.filter(
             (c) =>
               c.region === stateRegion &&
-              c.name.toLowerCase().includes(filter.toLowerCase())
+              c.name.official.toLowerCase().includes(filter.toLowerCase())
           )
         );
       }
@@ -121,7 +121,7 @@ const CountryList = ({ countryList }) => {
                 population={population}
                 capital={capital}
                 region={region}
-                imgSrc={flag.svg}
+                imgSrc={flags.svg}
                 code={cioc}
               />
             </a>
