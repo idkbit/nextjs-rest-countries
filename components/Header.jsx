@@ -23,9 +23,9 @@ const Header = () => {
         onClick={toggleColorMode}
         aria-label="toggle color theme.">
         {colorMode === "dark" ? (
-          <MoonIcon bgColor="transparent" boxShadow="base" mr={4} />
+          <MoonIcon boxShadow="base" mr={4} />
         ) : (
-          <SunIcon bgColor="transparent" boxShadow="base" mr={4} />
+          <SunIcon boxShadow="base" mr={4} />
         )}
         Dark Mode
       </Button>
