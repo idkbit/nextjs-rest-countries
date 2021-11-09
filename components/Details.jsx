@@ -23,6 +23,7 @@ const Details = ({
 }) => {
   const { colorMode } = useColorMode();
   const color = colorMode === "dark" ? "white" : "textLight";
+  const languagesArray = Object.entries(languages).map(([key, value]) => value);
 
   return (
     <Flex direction={{ base: "column", xl: "row" }}>
@@ -34,7 +35,7 @@ const Details = ({
         <Image
           src={flags.svg}
           layout="fill"
-          alt={`${name} flag`}
+          alt={`${name.official} flag`}
           objectFit="contain"
           objectPosition="0 0"
         />
@@ -49,7 +50,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Native Name:{" "}
               </Text>
-              {name.nativeName}
+              {Object.keys(name.nativeName)[0].official}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
@@ -87,9 +88,9 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Currencies:{" "}
               </Text>
-              {Array.from(currencies)?.map((c, index) => (
-                <Text key={c.name} as="span">
-                  {c.name}
+              {Object.entries(currencies).map(([key, value], index) => (
+                <Text key={key + value} as="span">
+                  {value.name}
                   {index < currencies.length - 1 && ", "}
                 </Text>
               ))}
@@ -98,10 +99,10 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Languages:{" "}
               </Text>
-              {Array.from(languages)?.map((l, index) => (
-                <Text key={l.name} as="span">
-                  {l.name}
-                  {index < languages.length - 1 && ", "}
+              {languagesArray.map((lang, index) => (
+                <Text key={lang} as="span">
+                  {lang}
+                  {index < languagesArray.length - 1 && ", "}
                 </Text>
               ))}
             </Heading>
@@ -109,7 +110,7 @@ const Details = ({
         </Flex>
         {!borders && (
           <Heading color={color} mt={14} fontSize="lg" as="h3">
-            {name} has no borders with other countries.
+            {name.official} has no borders with other countries.
           </Heading>
         )}
         {borders && (
