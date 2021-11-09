@@ -12,6 +12,7 @@ const Header = () => {
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       display="flex"
       justifyContent="space-between"
+      alignItems="center"
       px={{ base: 5, md: 10, lg: 20 }}>
       <Heading as="h1" fontSize={{ base: "xl", md: "2xl" }}>
         <Link href="/">

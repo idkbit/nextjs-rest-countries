@@ -51,7 +51,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Native Name:{" "}
               </Text>
-              {name.nativeName && Object.keys(name.nativeName)[0].official}
+              {name.nativeName && Object.values(name.nativeName)[0].official}
             </Heading>
             <Heading color={color} as="h3" fontSize="lg" fontWeight="300">
               <Text fontWeight="700" as="span">
@@ -75,7 +75,7 @@ const Details = ({
               <Text fontWeight="700" as="span">
                 Capital:{" "}
               </Text>
-              {capital}
+              {capital ? capital : "None"}
             </Heading>
           </Box>
           <Box mt={{ base: 8, md: 0 }}>
