@@ -8,6 +8,7 @@ import {
   Button,
   Flex,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 const Details = ({
   name,
@@ -25,6 +26,26 @@ const Details = ({
   const color = colorMode === "dark" ? "white" : "textLight";
   const languagesArray =
     languages && Object.entries(languages).map(([key, value]) => value);
+
+  const [neighbours, setNeighbours] = useState([]);
+
+  useEffect(() => {
+    const requests = borders.map((country) =>
+      fetch(`https://restcountries.com/v3.1/alpha/${country}`)
+    );
+    Promise.all(requests)
+      .then((responses) =>
+        Promise.all(responses.map((response) => response.json()))
+      )
+      .then((data) =>
+        setNeighbours(
+          data.map((country) => {
+            const data = Object.values(country)[0];
+            return [data.name.common, data.cca3];
+          })
+        )
+      );
+  }, [borders]);
 
   return (
     <Flex direction={{ base: "column", xl: "row" }}>
@@ -127,8 +148,8 @@ const Details = ({
               Border countries:{" "}
             </Heading>
             <Flex wrap="wrap">
-              {borders?.map((c) => (
-                <Link passHref key={c} href={`/${c}`}>
+              {neighbours?.map((c) => (
+                <Link passHref key={c[0]} href={`/${c[1]}`}>
                   <Button
                     padding="1rem 2rem"
                     fontWeight="300"
@@ -137,7 +158,7 @@ const Details = ({
                     boxShadow="base"
                     color={color}
                     bgColor={colorMode === "dark" ? "elementsDark" : "white"}>
-                    {c}
+                    {c[0]}
                   </Button>
                 </Link>
               ))}
