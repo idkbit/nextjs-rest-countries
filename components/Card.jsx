@@ -8,7 +8,7 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       borderRadius="5px"
       overflow="hidden"
-      boxShadow="lg">
+      boxShadow="md">
       <Box height="50%" position="relative" mb={{ base: 8 }}>
         <Image
           src={imgSrc}

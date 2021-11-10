@@ -43,7 +43,7 @@ const Details = ({
       </Box>
       <Box mt={{ base: 8, md: 0 }}>
         <Heading mb={8} color={color}>
-          {name.official}
+          {name.common}
         </Heading>
         <Flex direction={{ base: "column", md: "row" }} css={{ gap: "2rem" }}>
           <Box>
