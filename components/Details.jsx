@@ -30,6 +30,7 @@ const Details = ({
   const [neighbours, setNeighbours] = useState([]);
 
   useEffect(() => {
+    if (!borders) return;
     const requests = borders.map((country) =>
       fetch(`https://restcountries.com/v3.1/alpha/${country}`)
     );
