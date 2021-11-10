@@ -70,6 +70,22 @@ export async function getStaticProps({ params }) {
   );
   const data = await response.json();
   data[0].population = numberWithCommas(data[0].population);
+  const borderCodes = data[0].borders;
+  if (borderCodes) {
+    const requests = await borderCodes.map((code) =>
+      fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+    );
+    const responses = await Promise.all(requests);
+    const neighbourCountries = await Promise.all(
+      responses.map((response) => response.json())
+    );
+    const infoArray = Object.values(neighbourCountries);
+    const newBordersArray = infoArray.map((country) => {
+      return [country[0].name.common, country[0].cca3];
+    });
+    data[0].borders = newBordersArray;
+  }
+
   return {
     props: {
       ...data[0],

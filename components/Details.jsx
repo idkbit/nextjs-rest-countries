@@ -8,7 +8,6 @@ import {
   Button,
   Flex,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 
 const Details = ({
   name,
@@ -26,27 +25,6 @@ const Details = ({
   const color = colorMode === "dark" ? "white" : "textLight";
   const languagesArray =
     languages && Object.entries(languages).map(([key, value]) => value);
-
-  const [neighbours, setNeighbours] = useState([]);
-
-  useEffect(() => {
-    if (!borders) return;
-    const requests = borders.map((country) =>
-      fetch(`https://restcountries.com/v3.1/alpha/${country}`)
-    );
-    Promise.all(requests)
-      .then((responses) =>
-        Promise.all(responses.map((response) => response.json()))
-      )
-      .then((data) =>
-        setNeighbours(
-          data.map((country) => {
-            const data = Object.values(country)[0];
-            return [data.name.common, data.cca3];
-          })
-        )
-      );
-  }, [borders]);
 
   return (
     <Flex direction={{ base: "column", xl: "row" }}>
@@ -140,7 +118,7 @@ const Details = ({
             {name.official} has no borders with other countries.
           </Heading>
         )}
-        {borders && neighbours.length > 0 && (
+        {borders && (
           <Flex
             mt={14}
             direction={{ base: "column", xl: "row" }}
@@ -149,7 +127,7 @@ const Details = ({
               Border countries:{" "}
             </Heading>
             <Flex wrap="wrap">
-              {neighbours?.map((c) => (
+              {borders.map((c) => (
                 <Link passHref key={c[0]} href={`/${c[1]}`}>
                   <Button
                     padding="1rem 2rem"
