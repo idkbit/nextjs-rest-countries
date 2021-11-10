@@ -93,7 +93,7 @@ const Details = ({
                 ? Object.entries(currencies).map(([key, value], index) => (
                     <Text key={key + value} as="span">
                       {value.name}
-                      {index < currencies.length - 1 && ", "}
+                      {index < Object.entries(currencies).length - 1 && ", "}
                     </Text>
                   ))
                 : "None"}
