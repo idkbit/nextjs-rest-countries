@@ -140,58 +140,6 @@ const Details = ({
             {name.official} has no borders with other countries.
           </Heading>
         )}
-        {borders && (
-          <Flex
-            mt={14}
-            direction={{ base: "column", xl: "row" }}
-            align={{ xl: "center" }}>
-            <Heading color={color} mt={4} fontSize="lg" mr={4} as="h4">
-              Border countries:{" "}
-            </Heading>
-            <Flex wrap="wrap">
-              {borders?.map((c) => (
-                <Link passHref key={c} href={`/${c}`}>
-                  <Button
-                    padding="1rem 2rem"
-                    fontWeight="300"
-                    mr={4}
-                    mt={4}
-                    boxShadow="base"
-                    color={color}
-                    bgColor={colorMode === "dark" ? "elementsDark" : "white"}>
-                    {c}
-                  </Button>
-                </Link>
-              ))}
-            </Flex>
-          </Flex>
-        )}
-        {borders && neighbours.length > 0 && (
-          <Flex
-            mt={14}
-            direction={{ base: "column", xl: "row" }}
-            align={{ xl: "center" }}>
-            <Heading color={color} mt={4} fontSize="lg" mr={4} as="h4">
-              Border countries:{" "}
-            </Heading>
-            <Flex wrap="wrap">
-              {neighbours?.map((c) => (
-                <Link passHref key={c[0]} href={`/${c[1]}`}>
-                  <Button
-                    padding="1rem 2rem"
-                    fontWeight="300"
-                    mr={4}
-                    mt={4}
-                    boxShadow="base"
-                    color={color}
-                    bgColor={colorMode === "dark" ? "elementsDark" : "white"}>
-                    {c[0]}
-                  </Button>
-                </Link>
-              ))}
-            </Flex>
-          </Flex>
-        )}
         {borders && neighbours.length > 0 && (
           <Flex
             mt={14}
