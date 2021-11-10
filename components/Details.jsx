@@ -166,7 +166,7 @@ const Details = ({
             </Flex>
           </Flex>
         )}
-        {borders && neighbours.length && (
+        {borders && neighbours.length > 0 && (
           <Flex
             mt={14}
             direction={{ base: "column", xl: "row" }}
