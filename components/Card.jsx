@@ -9,14 +9,13 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
       borderRadius="5px"
       overflow="hidden"
       boxShadow="md">
-      <Box height="50%" position="relative" mb={{ base: 8 }}>
+      <Box width="100%" height={56} position="relative" mb={{ base: 8 }}>
         <Image
           src={imgSrc}
           alt={`${name} flag`}
-          layout="responsive"
+          layout="fill"
           objectFit="contain"
           objectPosition="0 0"
-          width={320}
           height={240}
         />
       </Box>
