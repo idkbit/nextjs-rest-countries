@@ -6,11 +6,11 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
   return (
     <Box
       as="article"
-      role="article"
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       borderRadius="5px"
       overflow="hidden"
-      boxShadow="md">
+      boxShadow="md"
+      role="presentation">
       <Box width="100%" height={60} position="relative" mb={{ base: 8 }}>
         <Image
           src={imgSrc}

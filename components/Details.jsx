@@ -32,7 +32,8 @@ const Details = ({
         width={{ base: "100%", xl: "600px" }}
         height={{ base: "300px", md: "600px", xl: "400px" }}
         position="relative"
-        mr={{ md: 14 }}>
+        mr={{ md: 14 }}
+        role="presentation">
         <Image
           src={flags.svg}
           layout="fill"
