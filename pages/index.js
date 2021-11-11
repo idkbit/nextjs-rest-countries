@@ -14,6 +14,7 @@ export default function Home({ countryList }) {
       </Head>
       <Layout>
         <Flex
+          as="section"
           direction={{ base: "column", lg: "row" }}
           alignItems="flex-start"
           justifyContent="space-between"
