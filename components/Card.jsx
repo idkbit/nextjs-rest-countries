@@ -5,6 +5,8 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
   const { colorMode } = useColorMode();
   return (
     <Box
+      as="article"
+      role="contentinfo"
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       borderRadius="5px"
       overflow="hidden"
