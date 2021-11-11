@@ -6,6 +6,7 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
   return (
     <Box
       as="article"
+      role="article"
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       borderRadius="5px"
       overflow="hidden"
