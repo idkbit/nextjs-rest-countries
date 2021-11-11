@@ -5,12 +5,14 @@ const Card = ({ imgSrc, name, population, region, capital }) => {
   const { colorMode } = useColorMode();
   return (
     <Box
+      role="countryinfo"
       backgroundColor={colorMode === "dark" ? "elementsDark" : "white"}
       borderRadius="5px"
       overflow="hidden"
       boxShadow="md">
       <Box width="100%" height={60} position="relative" mb={{ base: 8 }}>
         <Image
+          role="flag"
           src={imgSrc}
           alt={`${name} flag`}
           layout="fill"

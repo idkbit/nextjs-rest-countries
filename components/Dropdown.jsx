@@ -27,6 +27,7 @@ const Dropdown = () => {
   return (
     <Menu id="menu" isLazy>
       <MenuButton
+        role="dropdownmenu"
         mt={{ base: 8, lg: 0 }}
         boxShadow="base"
         bgColor={colorMode === "dark" ? "elementsDark" : "white"}

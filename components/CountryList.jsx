@@ -99,6 +99,7 @@ const CountryList = ({ countryList }) => {
   if (!filter && stateRegion === "all") {
     return (
       <Grid
+        role="countrylist"
         as={InfiniteScroll}
         dataLength={current.length}
         next={getMoreData}
@@ -115,7 +116,11 @@ const CountryList = ({ countryList }) => {
   if (!filtered.length && stateRegion !== "all") return <h2> No matches</h2>;
 
   return (
-    <Grid as="main" gridTemplateColumns={gridColumns} gap={14}>
+    <Grid
+      role="countrylist"
+      as="main"
+      gridTemplateColumns={gridColumns}
+      gap={14}>
       {filtered && filtered.map(renderCards)}
     </Grid>
   );
