@@ -18,11 +18,10 @@ const Country = ({
 }) => {
   const { colorMode } = useColorMode();
   return (
-    <Layout role="container">
+    <Layout>
       <Box display="flex" flexDirection="column" alignItems="flex-start">
         <Link href="/" passHref>
           <Button
-            role="toggletheme"
             color={colorMode === "dark" ? "white" : "textLight"}
             bgColor={colorMode === "dark" ? "elementsDark" : "white"}
             boxShadow="md"

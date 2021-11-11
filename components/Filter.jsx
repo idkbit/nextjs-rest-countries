@@ -6,7 +6,6 @@ const Filter = () => {
   const { colorMode } = useColorMode();
   return (
     <Box
-      role="search"
       as="form"
       onSubmit={(e) => {
         e.preventDefault();

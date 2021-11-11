@@ -27,14 +27,13 @@ const Details = ({
     languages && Object.entries(languages).map(([key, value]) => value);
 
   return (
-    <Flex role="details" direction={{ base: "column", xl: "row" }}>
+    <Flex direction={{ base: "column", xl: "row" }}>
       <Box
         width={{ base: "100%", xl: "600px" }}
         height={{ base: "300px", md: "600px", xl: "400px" }}
         position="relative"
         mr={{ md: 14 }}>
         <Image
-          role="flagimage"
           src={flags.svg}
           layout="fill"
           alt={`${name.official} flag`}

@@ -13,7 +13,6 @@ const Header = () => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
-      role="header"
       px={{ base: 5, md: 10, lg: 20 }}>
       <Heading as="h1" fontSize={{ base: "xl", md: "2xl" }}>
         <Link href="/">
