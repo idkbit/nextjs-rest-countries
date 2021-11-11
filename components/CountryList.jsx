@@ -17,24 +17,35 @@ const CountryList = ({ countryList }) => {
     countryList.slice(count.prev, count.next)
   );
 
+  const compare = (a, b) =>
+    a.name.common > b.name.common ? 1 : b.name.common > a.name.common ? -1 : 0;
+
+  const allCountriesFilteredByName = countryList.sort(compare);
+
   useEffect(() => {
     if (!filter && stateRegion === "all") return;
     const timer = setTimeout(() => {
       if (stateRegion === "all") {
         setFiltered(
-          countryList.filter((c) =>
-            c.name.official.toLowerCase().includes(filter.toLowerCase())
-          )
+          countryList
+            .filter((c) =>
+              c.name.common.toLowerCase().includes(filter.toLowerCase())
+            )
+            .sort(compare)
         );
       } else if (!filter && stateRegion !== "all") {
-        setFiltered(countryList.filter((c) => c.region === stateRegion));
+        setFiltered(
+          countryList.filter((c) => c.region === stateRegion).sort(compare)
+        );
       } else {
         setFiltered(
-          countryList.filter(
-            (c) =>
-              c.region === stateRegion &&
-              c.name.official.toLowerCase().includes(filter.toLowerCase())
-          )
+          countryList
+            .filter(
+              (c) =>
+                c.region === stateRegion &&
+                c.name.official.toLowerCase().includes(filter.toLowerCase())
+            )
+            .sort(compare)
         );
       }
     }, 500);
@@ -96,7 +107,7 @@ const CountryList = ({ countryList }) => {
         gridTemplateColumns={gridColumns}
         placeContent={{ base: "center", lg: "start" }}
         gap={{ base: 14 }}>
-        {current && current.map(renderCards)}
+        {current && allCountriesFilteredByName.map(renderCards)}
       </Grid>
     );
   }
