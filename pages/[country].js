@@ -2,6 +2,7 @@ import Details from "../components/Details";
 import { numberWithCommas } from "../utils";
 import { Box, Button, Text, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
+import Head from "next/head";
 import Layout from "../components/Layout";
 
 const Country = ({
@@ -18,35 +19,40 @@ const Country = ({
 }) => {
   const { colorMode } = useColorMode();
   return (
-    <Layout>
-      <Box display="flex" flexDirection="column" alignItems="flex-start">
-        <Link href="/" passHref>
-          <Button
-            color={colorMode === "dark" ? "white" : "textLight"}
-            bgColor={colorMode === "dark" ? "elementsDark" : "white"}
-            boxShadow="md"
-            padding="1rem 2rem"
-            mb={14}>
-            <Text as="span" mr={2}>
-              &larr;
-            </Text>{" "}
-            Back
-          </Button>
-        </Link>
-        <Details
-          name={name}
-          population={population}
-          region={region}
-          subregion={subregion}
-          borders={borders}
-          capital={capital}
-          tld={tld}
-          currencies={currencies}
-          languages={languages}
-          flags={flags}
-        />
-      </Box>
-    </Layout>
+    <>
+      <Head>
+        <title>{name.common} | Where in the world?</title>
+      </Head>
+      <Layout>
+        <Box display="flex" flexDirection="column" alignItems="flex-start">
+          <Link href="/" passHref>
+            <Button
+              color={colorMode === "dark" ? "white" : "textLight"}
+              bgColor={colorMode === "dark" ? "elementsDark" : "white"}
+              boxShadow="md"
+              padding="1rem 2rem"
+              mb={14}>
+              <Text as="span" mr={2}>
+                &larr;
+              </Text>{" "}
+              Back
+            </Button>
+          </Link>
+          <Details
+            name={name}
+            population={population}
+            region={region}
+            subregion={subregion}
+            borders={borders}
+            capital={capital}
+            tld={tld}
+            currencies={currencies}
+            languages={languages}
+            flags={flags}
+          />
+        </Box>
+      </Layout>
+    </>
   );
 };
 
